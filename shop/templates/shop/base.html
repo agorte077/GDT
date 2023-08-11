@@ -12,14 +12,14 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">OGseed</a>
+            <a class="navbar-brand" href="{% url 'Home'%}">OGseed</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{% url 'Home'%}">
                             <i class="fas fa-home"></i> <!-- Icône Accueil -->
                             Accueil
                         </a>
@@ -37,10 +37,17 @@
                         </a>
                     </li>
                 </ul>
-                <!-- Logo pour se connecter -->
-                <a class="navbar-brand" href="{% url 'login' %}">
+
+                {% if user.is_authenticated %}
+                <h3>Utilisateur : {{ user.first_name }}</h3>
+                <button type="submit"><a href="{% url 'logout' %}">Déconnexion</a></button>
+                {% else %}
+                <a class="navbar-brand" href="{% url 'user_login' %}">
                     <i class="fas fa-user"></i> <!-- Icône pour se connecter -->
                 </a>
+                {% endif %}
+                <!-- Logo pour se connecter -->
+                
                 <!-- Logo du panier -->
                 <a class="navbar-brand" href="{% url 'cart' %}">
                     <i class="fas fa-shopping-cart"></i> <!-- Icône du panier -->
