@@ -4,6 +4,7 @@ from django.contrib.auth import get_user_model
 
 
 
+
 class Category(models.Model):
     name = models.CharField(max_length=200)
     date_added = models.DateTimeField(auto_now=True)
@@ -65,3 +66,5 @@ class CartItem(models.Model):
 
     def __str__(self):
         return f"{self.product.title} - Quantity: {self.quantity}"
+
+

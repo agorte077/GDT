@@ -1,27 +1,21 @@
 {% extends "shop/base.html" %}
 
-{% block content %}
-    <div class="row">
-        
-        <div class="col-md-6">
-            <div>
-                <img src="{{ product.image}}" alt="">
-                
-            </div>
-        </div>
+{% block title %}Détails du Produit - {{ product.title }}{% endblock %}
 
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
         <div class="col-md-6">
-            <div class="text-warning display-3">
-                {{ product.title }}
-            </div>
-            <div class="text-danger">
-                {{ products_object.price }}
-            </div>
-            <div>
-                {{ product.description }}
-            </div>
-            <a href="#"><button class="btn btn-success">Acheter</button></a>
-            
+            <img src="{{ product.image }}" alt="{{ product.title }}" class="img-fluid" >
+        </div>
+        <div class="col-md-6">
+            <h1 class="display-4">{{ product.title }}</h1>
+            <p class="lead">Prix : {{ product.price }} $</p>
+            <p>Catégorie : {{ product.category }}</p>
+            <p>{{ product.description }}</p>
+            <a href="#" class="btn btn-success">Acheter</a>
+            <a href="{% url 'Home' %}" class="btn btn-secondary">Continuer les achats</a>
         </div>
     </div>
+</div>
 {% endblock %}

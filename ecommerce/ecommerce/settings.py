@@ -16,7 +16,15 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 from pathlib import Path
 import os
-
+from .info import *
+import django
+from django.utils.encoding import force_str
+django.utils.encoding.force_text = force_str
+EMAIL_USE_TLS = EMAIL_USE_TLS 
+EMAIL_HOST=EMAIL_HOST
+EMAIL_HOST_USER = EMAIL_HOST_USER 
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
+EMAIL_PORT= EMAIL_PORT
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 STATIC_URL = '/static/'
@@ -24,6 +32,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 TEMPLATES_DIRS = [os.path.join(BASE_DIR, 'templates')]
+
+
+
 
 # ... (rest of the settings)
 
@@ -136,3 +147,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+from django.contrib.messages import constants as messages
+
+# Autres paramètres de configuration ...
+
+MESSAGE_TAGS = {
+    messages.DEBUG: 'alert-info',
+    messages.INFO: 'alert-info',
+    messages.SUCCESS: 'alert-success',
+    messages.WARNING: 'alert-warning',
+    messages.ERROR: 'alert-danger',
+    
+}
